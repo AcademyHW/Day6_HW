@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 using System.Collections.Generic;
 
 namespace Day6_HW.Task3
@@ -15,18 +15,31 @@ namespace Day6_HW.Task3
         public int CalculateNotCloseBrackets()
         {
             Stack<char> brackets = new Stack<char>();
+            var bracketErrors = 0;
             for (int i = 0; i < Sequence.Length; i++)
             {
-                if (Sequence[i]=='(')
+                try
                 {
-                    brackets.Push('1');
+                    if (Sequence[i] == '(')
+                    {
+                        brackets.Push('1');
+                    }
+                    else if (Sequence[i] == ')' && brackets.Count != 0)
+                    {
+                        brackets.Pop();
+                    }
+                    else if (Sequence[i] == ')' && brackets.Count == 0)
+                    {
+                        bracketErrors--;
+                        throw new Exception();
+                    }
                 }
-                if (Sequence[i]==')' && brackets.Count != 0)
+                catch (Exception)
                 {
-                    brackets.Pop();
+                    Console.WriteLine("Found close bracket , but not found open bracket");
                 }
             }
-            return brackets.Count;
+            return bracketErrors == 0 ? brackets.Count : bracketErrors;
         }
     }
 }

@@ -39,7 +39,7 @@ namespace Day6_HW
                 );
 
             //Task3
-            var brackets = new Task3.Brackets("asdasdassd(asdasd)(asd)asd(asd)asd(asd(asd(asd)asd)");
+            var brackets = new Task3.Brackets("asdasdassd(asdasd)(asd)asd(asd)asd(asd(asd(asd)asd))))");
             Console.WriteLine(brackets.CalculateNotCloseBrackets()); 
         }
     }
