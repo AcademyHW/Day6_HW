@@ -11,8 +11,8 @@ namespace Day6_HW.Task3
         {
             Sequence = sequence;
         }
-
-        public int CalculateNotCloseBrackets()
+        
+        public int CalculateNotCloseBrackets() // ( ) - closed brackets (return 0), (( ) - not closed bracket (return 1), ))() - error (return -2)
         {
             Stack<char> brackets = new Stack<char>();
             var bracketErrors = 0;
